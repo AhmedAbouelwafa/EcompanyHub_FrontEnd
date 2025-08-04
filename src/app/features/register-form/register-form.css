@@ -1,0 +1,677 @@
+/* Block: company-register */
+.company-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Cairo', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Element: company-register__background */
+.company-register__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Element: company-register__floating-shapes */
+.company-register__floating-shapes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Element: company-register__shape */
+.company-register__shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: company-register__float 6s ease-in-out infinite;
+}
+
+.company-register__shape--1 {
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.company-register__shape--2 {
+  width: 120px;
+  height: 120px;
+  top: 55%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.company-register__shape--3 {
+  width: 60px;
+  height: 60px;
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.company-register__shape--4 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+.company-register__shape--5 {
+  width: 70px;
+  height: 70px;
+  bottom: 35%;
+  right: 5%;
+  animation-delay: 4s;
+}
+
+/* Modifier: company-register__float */
+@keyframes company-register__float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Element: company-register__wrapper */
+.company-register__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Element: company-register__card */
+.company-register__card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modifier: company-register__card--animate */
+.company-register__card--animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Element: company-register__card-inner */
+.company-register__card-inner {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.company-register__card-inner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* Element: company-register__seed-btn */
+.company-register__seed-btn {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 0.3s ease;
+}
+
+.company-register__seed-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+}
+
+/* Element: company-register__header */
+.company-register__header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Element: company-register__icon-wrapper */
+.company-register__icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  animation: company-register__pulse 2s ease-in-out infinite;
+}
+
+/* Modifier: company-register__pulse */
+@keyframes company-register__pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+  }
+}
+
+/* Element: company-register__icon */
+.company-register__icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Element: company-register__title */
+.company-register__title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 0.3rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Element: company-register__subtitle */
+.company-register__subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Element: company-register__form */
+.company-register__form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+}
+
+/* Element: company-register__form-group */
+.company-register__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Modifier: company-register__form-group--logo */
+.company-register__form-group--logo {
+  grid-column: span 3;
+  align-items: center;
+  justify-self: center;
+}
+
+/* Modifier: company-register__form-group--submit */
+.company-register__form-group--submit {
+  grid-column: span 3;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Element: company-register__label */
+.company-register__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Element: company-register__label-icon */
+.company-register__label-icon {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Element: company-register__input-wrapper */
+.company-register__input-wrapper {
+  position: relative;
+}
+
+/* Element: company-register__input */
+.company-register__input {
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.company-register__input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.company-register__input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+.company-register__input--error {
+  border-color: #ef4444;
+  animation: company-register__shake 0.5s ease-in-out;
+}
+
+/* Modifier: company-register__shake */
+@keyframes company-register__shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Element: company-register__input-focus-border */
+.company-register__input-focus-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.company-register__input:focus + .company-register__input-focus-border {
+  opacity: 0.3;
+}
+
+/* Element: company-register__error */
+.company-register__error {
+  font-size: 0.75rem;
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  animation: company-register__slideIn 0.3s ease-out;
+}
+
+/* Modifier: company-register__slideIn */
+@keyframes company-register__slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Element: company-register__error-icon */
+.company-register__error-icon {
+  font-size: 0.8rem;
+}
+
+/* Element: company-register__logo-wrapper */
+.company-register__logo-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2) border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+  animation: company-register__logo-pulse 2.5s ease-in-out infinite;
+}
+
+.company-register__logo-wrapper:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 25px rgba(102, 126, 234, 0.5), 0 0 50px rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 0.2) border-box;
+}
+
+/* Modifier: company-register__logo-pulse */
+@keyframes company-register__logo-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.5);
+  }
+}
+
+/* Element: company-register__logo */
+.company-register__logo {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* Element: company-register__logo-placeholder */
+.company-register__logo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Element: company-register__logo-icon */
+.company-register__logo-icon {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.company-register__logo-wrapper:hover .company-register__logo-icon {
+  transform: scale(1.2);
+}
+
+/* Element: company-register__file-input */
+.company-register__file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Element: company-register__submit */
+.company-register__submit {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.company-register__submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.company-register__submit:hover::before {
+  left: 100%;
+}
+
+.company-register__submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.company-register__submit:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Element: company-register__submit-icon */
+.company-register__submit-icon {
+  font-size: 0.9rem;
+}
+
+/* Element: company-register__spinner */
+.company-register__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: company-register__spin 0.8s linear infinite;
+}
+
+/* Modifier: company-register__spin */
+@keyframes company-register__spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modifier: company-register__submit--loading */
+.company-register__submit--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .company-register__wrapper {
+    max-width: 800px;
+  }
+
+  .company-register__form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .company-register__form-group--logo {
+    grid-column: span 2;
+  }
+
+  .company-register__form-group--submit {
+    grid-column: span 2;
+  }
+
+  .company-register__card-inner {
+    padding: 1.5rem;
+  }
+
+  .company-register__title {
+    font-size: 1.6rem;
+  }
+
+  .company-register__logo-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-register__form {
+    grid-template-columns: 1fr;
+  }
+
+  .company-register__form-group--logo {
+    grid-column: span 1;
+  }
+
+  .company-register__form-group--submit {
+    grid-column: span 1;
+  }
+
+  .company-register__wrapper {
+    padding: 0.5rem;
+  }
+
+  .company-register__card-inner {
+    padding: 1rem;
+  }
+
+  .company-register__title {
+    font-size: 1.4rem;
+  }
+
+  .company-register__icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .company-register__icon {
+    font-size: 1.2rem;
+  }
+
+  .company-register__input,
+  .company-register__submit {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .company-register__logo-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-register__wrapper {
+    padding: 0.25rem;
+  }
+
+  .company-register__card-inner {
+    padding: 0.75rem;
+  }
+
+  .company-register__title {
+    font-size: 1.2rem;
+  }
+
+  .company-register__subtitle {
+    font-size: 0.8rem;
+  }
+
+  .company-register__logo-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .company-register__input,
+  .company-register__submit {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .company-register__label {
+    font-size: 0.8rem;
+  }
+}
+
+
+.company-register__guest-btn {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(107, 114, 128, 0.3);
+  margin-top: 0.5rem;
+}
+
+.company-register__guest-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.company-register__guest-btn:hover::before {
+  left: 100%;
+}
+
+.company-register__guest-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(107, 114, 128, 0.4);
+}
+
+.company-register__guest-btn:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Element: company-register__guest-icon */
+.company-register__guest-icon {
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .company-register__guest-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-register__guest-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+  }
+}

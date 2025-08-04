@@ -1,0 +1,222 @@
+<div class="company-register">
+  <!-- Animated Background Shapes -->
+  <div class="company-register__background">
+    <div class="company-register__floating-shapes">
+      <div class="company-register__shape company-register__shape--1"></div>
+      <div class="company-register__shape company-register__shape--2"></div>
+      <div class="company-register__shape company-register__shape--3"></div>
+      <div class="company-register__shape company-register__shape--4"></div>
+      <div class="company-register__shape company-register__shape--5"></div>
+    </div>
+  </div>
+
+  <div class="company-register__wrapper">
+    <div class="company-register__card company-register__card--animate">
+      <div class="company-register__card-inner">
+        <button (click)="seedDatainForm()" class="company-register__seed-btn">Seed Data</button>
+        <div class="company-register__header">
+          <div class="company-register__icon-wrapper">
+            <i class="fas fa-building company-register__icon" aria-hidden="true"></i>
+          </div>
+          <h2 class="company-register__title">Company Registration</h2>
+          <p class="company-register__subtitle">Create your company profile</p>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()" class="company-register__form">
+          <!-- Arabic Name -->
+          <div class="company-register__form-group">
+            <label for="arabicName" class="company-register__label">
+              <i class="fas fa-globe-asia company-register__label-icon" aria-hidden="true"></i>
+              الاسم بالعربية
+            </label>
+            <div class="company-register__input-wrapper">
+              <input
+                id="arabicName"
+                type="text"
+                class="company-register__input"
+                formControlName="arabicName"
+                placeholder="اسم الشركة بالعربية"
+                aria-required="true"
+                aria-describedby="arabicName-error"
+                [class.company-register__input--error]="arabicName?.touched && arabicName?.errors" />
+              <div class="company-register__input-focus-border"></div>
+            </div>
+            <div id="arabicName-error" *ngIf="arabicName?.touched && arabicName?.errors" role="alert">
+              <div class="company-register__error" *ngIf="arabicName?.errors?.['required']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                الاسم العربي مطلوب
+              </div>
+              <div class="company-register__error" *ngIf="arabicName?.errors?.['pattern']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                يجب أن يكون الاسم بالعربية فقط
+              </div>
+            </div>
+          </div>
+
+          <!-- English Name -->
+          <div class="company-register__form-group">
+            <label for="englishName" class="company-register__label">
+              <i class="fas fa-building company-register__label-icon" aria-hidden="true"></i>
+              Company Name
+            </label>
+            <div class="company-register__input-wrapper">
+              <input
+                id="englishName"
+                type="text"
+                class="company-register__input"
+                formControlName="englishName"
+                placeholder="Company name in English"
+                aria-required="true"
+                aria-describedby="englishName-error"
+                [class.company-register__input--error]="englishName?.touched && englishName?.errors" />
+              <div class="company-register__input-focus-border"></div>
+            </div>
+            <div id="englishName-error" *ngIf="englishName?.touched && englishName?.errors" role="alert">
+              <div class="company-register__error" *ngIf="englishName?.errors?.['required']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                English name is required
+              </div>
+              <div class="company-register__error" *ngIf="englishName?.errors?.['pattern']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                English name must be in English letters
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="company-register__form-group">
+            <label for="email" class="company-register__label">
+              <i class="fas fa-envelope company-register__label-icon" aria-hidden="true"></i>
+              Email
+            </label>
+            <div class="company-register__input-wrapper">
+              <input
+                id="email"
+                type="email"
+                class="company-register__input"
+                formControlName="email"
+                placeholder="Company email"
+                aria-required="true"
+                aria-describedby="email-error"
+                [class.company-register__input--error]="email?.touched && email?.errors" />
+              <div class="company-register__input-focus-border"></div>
+            </div>
+            <div id="email-error" *ngIf="email?.touched && email?.errors" role="alert">
+              <div class="company-register__error" *ngIf="email?.errors?.['required']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                Email is required
+              </div>
+              <div class="company-register__error" *ngIf="email?.errors?.['email']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                Invalid email address
+              </div>
+            </div>
+            <div class="company-register__error" *ngIf="errorMsg" role="alert">
+              <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+              {{ errorMsg }}
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="company-register__form-group">
+            <label for="phone" class="company-register__label">
+              <i class="fas fa-phone company-register__label-icon" aria-hidden="true"></i>
+              Phone (Optional)
+            </label>
+            <div class="company-register__input-wrapper">
+              <input
+                id="phone"
+                type="tel"
+                class="company-register__input"
+                formControlName="phone"
+                placeholder="+20 123 456 7890"
+                aria-describedby="phone-error"
+                [class.company-register__input--error]="phone?.touched && phone?.errors" />
+              <div class="company-register__input-focus-border"></div>
+            </div>
+            <div id="phone-error" *ngIf="phone?.touched && phone?.errors?.['pattern']" role="alert">
+              <div class="company-register__error">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                Invalid phone number format
+              </div>
+            </div>
+          </div>
+
+          <!-- Website URL -->
+          <div class="company-register__form-group">
+            <label for="websiteUrl" class="company-register__label">
+              <i class="fas fa-globe company-register__label-icon" aria-hidden="true"></i>
+              Website
+            </label>
+            <div class="company-register__input-wrapper">
+              <input
+                id="websiteUrl"
+                type="url"
+                class="company-register__input"
+                formControlName="websiteUrl"
+                placeholder="https://yourcompany.com"
+                aria-required="true"
+                aria-describedby="websiteUrl-error"
+                [class.company-register__input--error]="websiteUrl?.touched && websiteUrl?.errors" />
+              <div class="company-register__input-focus-border"></div>
+            </div>
+            <div id="websiteUrl-error" *ngIf="websiteUrl?.touched && websiteUrl?.errors" role="alert">
+              <div class="company-register__error" *ngIf="websiteUrl?.errors?.['required']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                Website URL is required
+              </div>
+              <div class="company-register__error" *ngIf="websiteUrl?.errors?.['pattern']">
+                <i class="fas fa-exclamation-circle company-register__error-icon" aria-hidden="true"></i>
+                Invalid website URL
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Logo -->
+          <div class="company-register__form-group company-register__form-group--logo">
+            <label class="company-register__label">
+              <i class="fas fa-image company-register__label-icon" aria-hidden="true"></i>
+              Logo (Optional)
+            </label>
+            <div class="company-register__logo-wrapper">
+              <img *ngIf="previewUrl" [src]="previewUrl" alt="Company Logo" class="company-register__logo" />
+              <div *ngIf="!previewUrl" class="company-register__logo-placeholder">
+                <i class="fas fa-cloud-upload-alt company-register__logo-icon" aria-hidden="true"></i>
+                <span>Upload Logo</span>
+              </div>
+              <input
+                type="file"
+                id="companyLogoInput"
+                (change)="onFileChange($event)"
+                class="company-register__file-input"
+                accept="image/*"
+                aria-label="Upload company logo" />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="company-register__form-group company-register__form-group--submit">
+            <button
+              type="submit"
+              class="company-register__submit"
+              [disabled]="registerForm.invalid || isSubmitting"
+              [class.company-register__submit--loading]="isSubmitting"
+              aria-label="Register Company">
+              <span *ngIf="isSubmitting" class="company-register__spinner"></span>
+              <i *ngIf="!isSubmitting" class="fas fa-check-circle company-register__submit-icon" aria-hidden="true"></i>
+              {{ isSubmitting ? 'جاري التسجيل...' : 'Register Now' }}
+            </button>
+            <!-- Continue as Guest Button -->
+            <button
+              type="button"
+              class="company-register__guest-btn"
+              (click)="continueAsGuest()"
+              aria-label="Continue as Guest">
+              <i class="fas fa-user company-register__guest-icon" aria-hidden="true"></i>
+              Continue as Guest
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="token-verification">
+  <!-- Animated Background -->
+  <div class="token-verification__background">
+    <div class="token-verification__floating-shapes">
+      <div class="token-verification__shape token-verification__shape--1"></div>
+      <div class="token-verification__shape token-verification__shape--2"></div>
+      <div class="token-verification__shape token-verification__shape--3"></div>
+      <div class="token-verification__shape token-verification__shape--4"></div>
+      <div class="token-verification__shape token-verification__shape--5"></div>
+    </div>
+  </div>
+
+  <div class="token-verification__wrapper">
+    <div class="token-verification__card">
+      <div class="token-verification__card-inner">
+        <!-- Header with Icon -->
+        <div class="token-verification__header">
+          <div class="token-verification__icon-wrapper">
+            <i class="fas fa-shield-alt token-verification__icon"></i>
+          </div>
+          <h1 class="token-verification__title">تحقق من الرمز</h1>
+          <p class="token-verification__subtitle">
+            تم إرسال رمز التحقق إلى بريدك الإلكتروني
+          </p>
+        </div>
+
+        <!-- Token Form -->
+        <form [formGroup]="tokenForm" (ngSubmit)="submit()" class="token-verification__form">
+          <div class="token-verification__form-group">
+            <label for="token" class="token-verification__label">
+              <i class="fas fa-key token-verification__label-icon"></i>
+              رمز التحقق
+            </label>
+            <div class="token-verification__input-wrapper">
+              <input
+                id="token"
+                type="text"
+                class="token-verification__input"
+                formControlName="token"
+                placeholder="أدخل رمز التحقق المكون من 6-8 أرقام"
+                maxlength="8"
+                autocomplete="off"
+                [class.token-verification__input--error]="token?.touched && token?.errors" />
+              <div class="token-verification__input-focus-border"></div>
+            </div>
+
+            @if(token?.touched && token?.errors?.['required']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                رمز التحقق مطلوب
+              </div>
+            }
+            @if(token?.touched && token?.errors?.['minlength']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                يجب أن يكون الرمز 6 أرقام على الأقل
+              </div>
+            }
+            @if(token?.touched && token?.errors?.['maxlength']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                يجب ألا يزيد الرمز عن 8 أرقام
+              </div>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <div class="token-verification__form-group">
+            <button
+              type="submit"
+              class="token-verification__submit"
+              [disabled]="tokenForm.invalid || isLoading"
+              [class.token-verification__submit--loading]="isLoading">
+              @if(isLoading) {
+                <div class="token-verification__spinner"></div>
+              } @else {
+                <i class="fas fa-check token-verification__submit-icon"></i>
+              }
+              {{ isLoading ? 'جاري التحقق...' : 'تحقق من الرمز' }}
+            </button>
+          </div>
+        </form>
+
+
+        <!-- Success Message -->
+        @if(showSuccess) {
+          <div class="token-verification__success">
+            <i class="fas fa-check-circle token-verification__success-icon"></i>
+            <span class="token-verification__success-text">
+              {{ successMessage }}
+            </span>
+          </div>
+        }
+        <!-- Error Message -->
+        @if(errorMsg) {
+          <div class="token-verification__error">
+            <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+            <span class="token-verification__error-text">
+              {{ errorMsg }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

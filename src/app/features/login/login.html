@@ -1,0 +1,114 @@
+<div class="token-verification">
+  <!-- Animated Background -->
+  <div class="token-verification__background">
+    <div class="token-verification__floating-shapes">
+      <div class="token-verification__shape token-verification__shape--1"></div>
+      <div class="token-verification__shape token-verification__shape--2"></div>
+      <div class="token-verification__shape token-verification__shape--3"></div>
+      <div class="token-verification__shape token-verification__shape--4"></div>
+      <div class="token-verification__shape token-verification__shape--5"></div>
+    </div>
+  </div>
+
+  <div class="token-verification__wrapper">
+    <div class="token-verification__card">
+      <div class="token-verification__card-inner">
+        <!-- Header with Icon -->
+        <div class="token-verification__header">
+          <div class="token-verification__icon-wrapper">
+            <i class="fas fa-sign-in-alt token-verification__icon"></i>
+          </div>
+          <h1 class="token-verification__title">تسجيل الدخول</h1>
+          <p class="token-verification__subtitle">
+            أدخل بريدك الإلكتروني وكلمة المرور
+          </p>
+        </div>
+
+        <!-- Login Form -->
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" class="token-verification__form">
+          <!-- Email -->
+          <div class="token-verification__form-group">
+            <label for="email" class="token-verification__label">
+              <i class="fas fa-envelope token-verification__label-icon"></i>
+              البريد الإلكتروني
+            </label>
+            <div class="token-verification__input-wrapper">
+              <input
+                id="email"
+                type="email"
+                class="token-verification__input"
+                formControlName="email"
+                placeholder="أدخل بريدك الإلكتروني"
+                [class.token-verification__input--error]="email?.touched && email?.errors" />
+              <div class="token-verification__input-focus-border"></div>
+            </div>
+
+            @if(email?.touched && email?.errors?.['required']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                البريد الإلكتروني مطلوب
+              </div>
+            }
+            @if(email?.touched && email?.errors?.['email']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                يجب إدخال بريد إلكتروني صالح
+              </div>
+            }
+          </div>
+
+          <!-- Password -->
+          <div class="token-verification__form-group">
+            <label for="password" class="token-verification__label">
+              <i class="fas fa-lock token-verification__label-icon"></i>
+              كلمة المرور
+            </label>
+            <div class="token-verification__input-wrapper">
+              <input
+                id="password"
+                type="password"
+                class="token-verification__input"
+                formControlName="password"
+                placeholder="أدخل كلمة المرور"
+                [class.token-verification__input--error]="password?.touched && password?.errors" />
+              <div class="token-verification__input-focus-border"></div>
+            </div>
+
+            @if(password?.touched && password?.errors?.['required']) {
+              <div class="token-verification__error">
+                <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+                كلمة المرور مطلوبة
+              </div>
+            }
+          </div>
+
+          <!-- Submit Button -->
+          <div class="token-verification__form-group">
+            <button
+              type="submit"
+              class="token-verification__submit"
+              [disabled]="loginForm.invalid || isLoading"
+              [class.token-verification__submit--loading]="isLoading">
+              @if(isLoading) {
+                <div class="token-verification__spinner"></div>
+              } @else {
+                <i class="fas fa-sign-in-alt token-verification__submit-icon"></i>
+              }
+              {{ isLoading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول' }}
+            </button>
+          </div>
+        </form>
+
+        <!-- Error Message -->
+        @if(errorMsg) {
+          <div class="token-verification__error">
+            <i class="fas fa-exclamation-circle token-verification__error-icon"></i>
+            <span class="token-verification__error-text">
+              {{ errorMsg }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

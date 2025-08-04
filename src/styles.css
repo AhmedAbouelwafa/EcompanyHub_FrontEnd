@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+/* إعدادات عامة للجذر (root) لتغطية الشاشة بالكامل */
+:where(html, body) {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* منع التمرير */
+  box-sizing: border-box;
+}
+
+/* ضبط التطبيق الرئيسي (app-root) ضمن حدود الشاشة */
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* الارتفاع الكامل للشاشة */
+  width: 100vw; /* العرض الكامل للشاشة */
+  overflow: hidden; /* منع التمرير داخل التطبيق */
+}
+
+/* التأكد من أن الحاويات الداخلية لا تتجاوز الحدود */
+.container, .wrapper {
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* التعامل مع المكونات الفرعية لتجنب التمرير */
+* {
+  box-sizing: border-box;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* إزالة أي حواف أو هوامش إضافية */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* التعامل مع الـ Flexbox إذا كنت تستخدمه */
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap; /* منع التفاف العناصر */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ضبط الارتفاع والعرض للأطفال تلقائيًا */
+.flex-container > * {
+  flex-shrink: 0; /* منع التصغير */
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}

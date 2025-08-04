@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RegisterForm } from './features/register-form/register-form';
 
 @Component({
   selector: 'app-root',
