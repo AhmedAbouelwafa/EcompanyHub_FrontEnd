@@ -1,0 +1,47 @@
+<div class="token-verification">
+  <!-- Animated Background -->
+  <div class="token-verification__background">
+    <div class="token-verification__floating-shapes">
+      <div class="token-verification__shape token-verification__shape--1"></div>
+      <div class="token-verification__shape token-verification__shape--2"></div>
+      <div class="token-verification__shape token-verification__shape--3"></div>
+      <div class="token-verification__shape token-verification__shape--4"></div>
+      <div class="token-verification__shape token-verification__shape--5"></div>
+    </div>
+  </div>
+
+  <div class="token-verification__wrapper">
+    <div class="token-verification__card">
+      <div class="token-verification__card-inner">
+        <!-- Company Logo -->
+        <div class="home__logo-container" *ngIf="companyName && companyLogo">
+          <img
+            [src]="companyLogo || '/image.png'"
+            alt="شعار الشركة"
+            class="home__logo"
+            title="شعار الشركة"
+          />
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="home__welcome">
+          <h1 class="home__welcome-title">مرحباً</h1>
+          <h2 class="home__welcome-subtitle">{{ companyName || 'بالضيف' }}</h2>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="home__logout">
+          <button
+            class="home__logout-btn"
+            (click)="logout()"
+            [class.home__logout-btn--loading]="isLoading"
+            aria-label="تسجيل الخروج">
+            <span *ngIf="isLoading" class="token-verification__spinner"></span>
+            <i *ngIf="!isLoading" class="fas fa-sign-out-alt home__logout-icon" aria-hidden="true"></i>
+            {{ isLoading ? 'جاري تسجيل الخروج...' : 'تسجيل الخروج' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
